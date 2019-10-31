@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Alex Curran">
+    <title>Progress Bar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        button {
+            font-family: 'Calibri Light', Tahoma, Roboto, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+        }
+
+        .title {
+            margin: 3rem;
+            font-weight: 400;
+            font-size: 2.2rem;
+        }
+
+        .progress {
+            width: 15rem;
+            height: 2rem;
+            background-color: #cecece;
+        }
+
+        .progress-bar {
+            background-color: #68D391;
+            height: 100%;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform linear;
+            will-change: transform;
+        }
+
+        .start {
+            margin-top: 2rem;
+            padding: .75rem 2.25rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            background-color: #7F9CF5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="title">Example Progress Bar</h1>
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+    <button class="start">Start</button>
+    
+    <script>
+        const startBtn = document.querySelector(".start");
+        const progressBar = document.querySelector(".progress-bar");
+
+        function fillBar(time) {
+            progressBar.style.transitionDuration = `${time}s`;
+            progressBar.style.transform = `scaleX(1)`;
+        }
+
+        startBtn.addEventListener("click", () => fillBar(1));
+    </script>
+</body>
+</html>
